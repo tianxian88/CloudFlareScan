@@ -1,1 +1,15 @@
 # CloudFlareScan
+lxc下操作：unbuntu 12
+apt install python3.13
+apt install python3-aiohttp
+python3 CloudFlareScan.py -v 4 -r NRT,SJC -s 10 -o  ips.txt
+命令行参数,缩写,类型,默认值,说明
+--version,-v,int,必填,指定扫描的 IP 版本：4 代表 IPv4，6 代表 IPv6
+--output,-o,str,results.txt,优选结果导出的 TXT 文本保存路径
+--port,-p,int,443,"指定优选扫描和连接测试的端口（如 443, 8443）"
+--speed-count,-s,int,10,需要进行测速并优选导出的最高 IP 数量
+--region,-r,str,None,"筛选目标地区代码（如 HKG 或 NRT,HND），多个用逗号隔开"
+--workers,-w,int,150,异步并发扫描的线程/任务数量
+--max-latency,-l,int,220,TCP 延迟筛选临界值（毫秒），超过此延迟的 IP 将被过滤
+--skip-speedtest,无,bool,False,添加此参数后将跳过下载测速，直接按延迟排序导出前 N 个结果
+--git-push,无,bool,False,扫描测速完成后，自动使用脚本配置推送到 GitHub 仓库
